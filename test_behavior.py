@@ -2,7 +2,7 @@ import unittest
 from behavior import *
 from tokenizer import *
 
-class test_behavior(unittest.TestCase):
+class TestBehavior(unittest.TestCase):
     '''docstring for behavior'''
     def test_behavior_returns_correct_values(self):
         token_data = TokenData()

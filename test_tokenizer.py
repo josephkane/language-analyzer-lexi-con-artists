@@ -1,7 +1,7 @@
 import unittest
 from tokenizer import *
 
-class test_tokenizer(unittest.TestCase):
+class TestTokenizer(unittest.TestCase):
     """docstring for test_analyzer"""
     def test_tokenize(self):
         message = 'Friendship is like money, easier made than kept'
