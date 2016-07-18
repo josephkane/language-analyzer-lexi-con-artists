@@ -13,7 +13,7 @@ class TestDomain(unittest.TestCase):
         classified_data = ClassifiedData()
         classified_data.count = 2
         classified_data.subCount = {'financial':1, 'behavioral':0, 'scientific':0, 'educational':0, 'politics':0, 'relationships':1}
-        behavior = Domain()
+        domain = Domain()
         classified_message = domain.categorize_message(token_data)
         self.assertEqual(classified_message.count, classified_data.count)
         self.assertEqual(classified_message.subCount, classified_data.subCount)
