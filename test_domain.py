@@ -1,5 +1,5 @@
 import unittest
-from behavior import *
+from domain import *
 from tokenizer import *
 
 class TestBehavior(unittest.TestCase):
