@@ -93,7 +93,7 @@ messages = [
   },
   {
     "author": "Jennifer Connoly",
-    "message": "I have enjoyed greatly the second blooming that comes when you finish the life of the emotions and of personal relations; and suddenly find - at the age of fifty, say - that a whole new life has opened before you, filled with things you can think about, study, or read about...It is as if a fresh sap of ideas and thoughts was rising in you."
+    "message": "I have enjoyed greatly the second blooming that comes when you finish the life of the emotions and of personal relations; and suddenly find - at the age of fifty, say - that a whole new life has opened before you, filled with things you can think about, study, or read about... It is as if a fresh sap of ideas and thoughts was rising in you."
   },
   {
     "author": "Michelle O'Mally",
