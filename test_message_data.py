@@ -1,5 +1,6 @@
 import unittest
-from scoring import *
+
+from message_data import *
 
 class TestScoring(unittest.TestCase):
     def test_score_output(self):
@@ -35,8 +36,8 @@ class TestScoring(unittest.TestCase):
         sentiment = ClassifiedData()
         sentiment.count = 6
         sentiment.subcount = {
-            "positive": 3
-            "negative": 1
+            "positive": 3,
+            "negative": 1,
             "neutral": 2
         }
         domain = Domain()
@@ -59,17 +60,9 @@ class TestScoring(unittest.TestCase):
             "transaction": 3
         }
         message_data.classified_data = {
-            "sentiment": sentiment
-            "domain": domain
+            "sentiment": sentiment,
+            "domain": domain,
             "behavior": behavior
         }
 
-
         self.assertEqual(message_data.calc_final_score(), score_data)
-
-
-
-
-
-
-
