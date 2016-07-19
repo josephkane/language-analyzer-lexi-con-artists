@@ -1,4 +1,5 @@
 import unittest
+from scoring import *
 
 class TestScoring(unittest.TestCase):
     def test_score_output(self):
