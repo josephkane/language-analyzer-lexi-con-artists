@@ -1,7 +1,33 @@
+from messages import *
+from message_data import *
 from tokenizer import *
+from behavior import *
+from domain import *
+from sentiment import *
 
 def analyze_messages():
-    pass
+    '''
+    Process each message and print the analyzed results
+    '''
+
+    behavior = Behavior()
+    domain = Domain()
+    sentiment = Sentiment()
+
+    for message in messages:
+        message_data = MessageData()
+        message_data.author = message.author
+        message_data.message = message.message
+
+        message_data.token_data = tokenize(message_data.message)
+
+        message_data.classified_data['behavior'] = behavior.categorize_message(token_data)
+        message_data.classified_data['domain'] = domain.categorize_message(token_data)
+        message_data.classified_data['sentiment'] = sentiment.categorize_message(token_data)
+
+        score_data = message_data.calc_final_scores()
+
+        print(create_message_output(score_data))
 
 def create_message_output(score_data):
     '''
@@ -29,31 +55,4 @@ def create_message_output(score_data):
     return output
 
 if __name__ == '__main__':
-    score_data = {
-        'author': 'Françoise Sagan',
-        'message': 'Class is an aura of confidence that is being sure without being cocky. Class has nothing to do with money. Class never runs scared. It is self-discipline and self-knowledge. It\'s the sure-footedness that comes with having proved you can meet life.',
-        'scores': {
-            'sentiment': {
-                'positive': 0.5,
-                'negative': 0.2,
-                'neutral': 0.3
-            },
-            'domain': {
-                'financial': 0.1,
-                'behavioral': 0.2,
-                'scientific': 0.7,
-                'educational': 0.4,
-                'politics': 0.1,
-                'relationships': 0.1
-            },
-            'behavior': {
-                'aggressive': 0.1,
-                'passive': 0.4,
-                'mentoring': 0.6,
-                'inquisitive': 0.8,
-                'transaction': 0.3
-            }
-        }
-    }
-
-    print(create_message_output(score_data))
+    analyze_messages()
