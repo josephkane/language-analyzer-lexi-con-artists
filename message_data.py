@@ -14,6 +14,12 @@ class MessageData:
         output['scores'] = dict()
         scores = output['scores']
 
-        # for each classified_data
+        types = {'behavior', 'domain', 'sentiment'}
+
+        for t in types:
+            data = self.classified_data[t]
+            scores[t] = dict()
+            for sub, score in data.subcount.items():
+                scores[t][sub] = round(score / data.count, 1)
 
         return output

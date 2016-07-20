@@ -1,9 +1,12 @@
 import unittest
 
+from lexicon import ClassifiedData
 from message_data import *
 
 class TestScoring(unittest.TestCase):
     def test_score_output(self):
+        self.maxDiff = None
+        
         score_data = {
             "author": "Françoise Sagan",
             "message": "Class is an aura of confidence that is being sure without being cocky. Class has nothing to do with money. Class never runs scared. It is self-discipline and self-knowledge. It's the sure-footedness that comes with having proved you can meet life.",
@@ -40,7 +43,7 @@ class TestScoring(unittest.TestCase):
             "negative": 1,
             "neutral": 2
         }
-        domain = Domain()
+        domain = ClassifiedData()
         domain.count = 21
         domain.subcount = {
             "financial": 3,
@@ -50,7 +53,7 @@ class TestScoring(unittest.TestCase):
             "politics": 3,
             "relationships": 2
         }
-        behavior = Behavior()
+        behavior = ClassifiedData()
         behavior.count = 10
         behavior.subcount = {
             "aggressive": 1,
@@ -66,3 +69,6 @@ class TestScoring(unittest.TestCase):
         }
 
         self.assertEqual(message_data.calc_final_scores(), score_data)
+
+if __name__ == '__main__':
+    unittest.main()
