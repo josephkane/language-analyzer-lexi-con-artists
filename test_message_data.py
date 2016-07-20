@@ -65,4 +65,4 @@ class TestScoring(unittest.TestCase):
             "behavior": behavior
         }
 
-        self.assertEqual(message_data.calc_final_score(), score_data)
+        self.assertEqual(message_data.calc_final_scores(), score_data)
