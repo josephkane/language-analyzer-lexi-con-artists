@@ -1,8 +1,17 @@
 from lexicon import *
 
 class Sentiment(Lexicon):
+    '''
+    Classify a message into Sentiment subcategories
+    '''
+
     def __init__(self):
-        Lexicon.__init__(self, sentiment_lexicon)
+        '''
+        Call the Lexicon constructor with this lexicon's data
+        '''
+
+        super().__init__(sentiment_lexicon)
+
 
 sentiment_lexicon = {
     'positive': {

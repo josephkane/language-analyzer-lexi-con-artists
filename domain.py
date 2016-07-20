@@ -1,9 +1,16 @@
 from lexicon import *
 
 class Domain(Lexicon):
-    def __init__(self):
-        Lexicon.__init__(self, domain_lexicon)
+    '''
+    Classify a message into domain subcategories
+    '''
 
+    def __init__(self):
+        '''
+        Call the Lexicon constructor with this lexicon's data
+        '''
+
+        super().__init__(domain_lexicon)
 
 
 domain_lexicon = {

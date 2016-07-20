@@ -1,8 +1,16 @@
 from lexicon import *
 
 class Behavior(Lexicon):
+    '''
+    Classify a message into behavior subcategories
+    '''
+
     def __init__(self):
-        Lexicon.__init__(self, behavior_lexicon)
+        '''
+        Call the Lexicon constructor with this lexicon's data
+        '''
+
+        super().__init__(behavior_lexicon)
 
 
 behavior_lexicon = {

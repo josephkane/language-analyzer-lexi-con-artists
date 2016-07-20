@@ -65,8 +65,15 @@ def get_punctuation(string):
 
 
 class TokenData:
+    '''
+    Contain the results of tokenizing a message
+    '''
 
     def __init__(self):
+        '''
+        Initialize with default values
+        '''
+
         self.alphanum_char = dict()
         self.word_count = 0
         self.sentence_count = 0
