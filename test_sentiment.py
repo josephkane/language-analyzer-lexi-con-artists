@@ -64,6 +64,18 @@ class TestSentiment(unittest.TestCase):
         self.assertEqual(classified_message.count, classified_data.count)
         self.assertEqual(classified_message.subcount, classified_data.subcount)
 
+        token_data = TokenData()
+        token_data.message_dict = {'p':2, 'r':2, 's':3, 't':2, 'y':1, 'a':3, 'd':2, 'e':7, 'f':1, 'h':2, 'i':5, 'k':2, 'l':1, 'm':2, 'n':3, 'o':1}
+        token_data.word_list = ['is', 'like', 'money', 'easier', 'made', 'than', 'kept', 'absurd', 'aprehend', 'cocky', 'cruel']
+        token_data.punctuation = {',':1, '.':1, '!':1}
+
+        new_sentiment = Sentiment()
+        new_classified_message = new_sentiment.categorize_message(token_data)
+
+        classified_data.subcount = {'positive':2, 'neutral':2, 'negative':5}
+
+        self.assertEqual(new_classified_message.subcount, classified_data.subcount)
+
     def test_modify_sentiment_from_behavior(self):
         message_data = TestSentiment.message_data_set_up()
 
@@ -77,13 +89,22 @@ class TestSentiment(unittest.TestCase):
         sentiment_class.modify_sentiment_from_behavior(message_data)
         self.assertNotEqual(message_data.classified_data['sentiment'].subcount, sentiment_original)
 
-    def test_greater(self):
+        message_data.classified_data['sentiment'].subcount = {
+            "positive": 1,
+            "negative": 3,
+            "neutral": 1
+        }
+
+        sentiment_class.modify_sentiment_from_behavior(message_data)
+        self.assertNotEqual(message_data.classified_data['sentiment'].subcount, sentiment_original)
+
+    def test_greater_than_fifty_percent_passiveness_modifies_sentiment(self):
         message_data = TestSentiment.message_data_set_up()
 
         message_data.classified_data['behavior'].count = 14
         message_data.classified_data['behavior'].subcount = {
             "aggressive": 1,
-            "passive": 8,
+            "passive": 13,
             "mentoring": 1,
             "inquisitive": 1,
             "transaction": 1
@@ -98,7 +119,7 @@ class TestSentiment(unittest.TestCase):
         sentiment_class.modify_sentiment_from_behavior(message_data)
         self.assertNotEqual(message_data.classified_data['sentiment'].subcount, sentiment_original)
 
-    def test_equal(self):
+    def test_fifty_percent_passiveness_modifies_sentiment(self):
         message_data = TestSentiment.message_data_set_up()
 
         message_data.classified_data['behavior'].count = 14
@@ -119,12 +140,12 @@ class TestSentiment(unittest.TestCase):
         sentiment_class.modify_sentiment_from_behavior(message_data)
         self.assertNotEqual(message_data.classified_data['sentiment'].subcount, sentiment_original)
 
-    def test_aggressive(self):
+    def test_aggressive_behavior_modifies_sentiment(self):
         message_data = TestSentiment.message_data_set_up()
 
         message_data.classified_data['behavior'].count = 14
         message_data.classified_data['behavior'].subcount = {
-            "aggressive": 7,
+            "aggressive": 13,
             "passive": 1,
             "mentoring": 1,
             "inquisitive": 1,
