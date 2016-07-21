@@ -82,5 +82,5 @@ class TestMessageData(unittest.TestCase):
 
         self.assertEqual(message_data.calc_final_scores(), score_data)
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover
     unittest.main()
