@@ -10,7 +10,7 @@ class Behavior(Lexicon):
         Call the Lexicon constructor with this lexicon's data
         '''
 
-        super().__init__(behavior_lexicon)
+        super().__init__('behavior', behavior_lexicon)
 
 
 behavior_lexicon = {

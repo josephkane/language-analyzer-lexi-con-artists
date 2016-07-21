@@ -12,12 +12,14 @@ class TestSentiment(unittest.TestCase):
         token_data.punctuation = {',':1, '.':1}
 
         classified_data = ClassifiedData()
+        classified_data.category_key = 'sentiment'
         classified_data.count = 5
         classified_data.subcount = {'positive':3, 'neutral':2, 'negative':0}
-        
+
         sentiment = Sentiment()
         classified_message = sentiment.categorize_message(token_data)
 
+        self.assertEqual(classified_message.category_key, classified_data.category_key)
         self.assertEqual(classified_message.count, classified_data.count)
         self.assertEqual(classified_message.subcount, classified_data.subcount)
 

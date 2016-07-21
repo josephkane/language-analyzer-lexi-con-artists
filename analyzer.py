@@ -21,9 +21,9 @@ def analyze_messages():
 
         message_data.token_data = tokenize(message_data.message)
 
-        message_data.classified_data['behavior'] = behavior.categorize_message(message_data.token_data)
-        message_data.classified_data['domain'] = domain.categorize_message(message_data.token_data)
-        message_data.classified_data['sentiment'] = sentiment.categorize_message(message_data.token_data)
+        message_data.add_classified_data(behavior.categorize_message(message_data.token_data))
+        message_data.add_classified_data(domain.categorize_message(message_data.token_data))
+        message_data.add_classified_data(sentiment.categorize_message(message_data.token_data))
 
         score_data = message_data.calc_final_scores()
 

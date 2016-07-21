@@ -10,7 +10,7 @@ class Domain(Lexicon):
         Call the Lexicon constructor with this lexicon's data
         '''
 
-        super().__init__(domain_lexicon)
+        super().__init__('domain', domain_lexicon)
 
 
 domain_lexicon = {
