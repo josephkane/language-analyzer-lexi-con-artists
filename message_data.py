@@ -9,6 +9,7 @@ class MessageData:
         classified_data - dictionary of ClassifiedData from lexicons
 
     Methods:
+        add_classified_data - add data to the classified_data dictionary
         calc_final_scores - get the scores from the classified_data
     '''
 
@@ -21,6 +22,15 @@ class MessageData:
         self.message = ''
         self.token_data = None
         self.classified_data = dict()
+
+    def add_classified_data(self, data):
+        '''
+        Add data to the classified_data dictionary based on category
+
+        Arguments:
+            The data to add
+        '''
+        self.classified_data[data.category_key] = data
 
     def calc_final_scores(self):
         '''
@@ -38,9 +48,7 @@ class MessageData:
         output['scores'] = dict()
         scores = output['scores']
 
-        types = {'behavior', 'domain', 'sentiment'}
-
-        for t in types:
+        for t in self.classified_data.keys():
             data = self.classified_data[t]
             scores[t] = dict()
             for sub, score in data.subcount.items():

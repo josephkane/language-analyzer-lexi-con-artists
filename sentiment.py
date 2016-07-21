@@ -10,7 +10,7 @@ class Sentiment(Lexicon):
         Call the Lexicon constructor with this lexicon's data
         '''
 
-        super().__init__(sentiment_lexicon)
+        super().__init__('sentiment', sentiment_lexicon)
 
 
 sentiment_lexicon = {

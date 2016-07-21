@@ -4,7 +4,15 @@ from lexicon import ClassifiedData
 from message_data import *
 
 class TestMessageData(unittest.TestCase):
-    
+
+    def test_add_classified_data(self):
+        classified_data = ClassifiedData()
+        classified_data.category_key = 'test'
+        message_data = MessageData()
+        message_data.add_classified_data(classified_data)
+
+        self.assertIn(classified_data.category_key, message_data.classified_data)
+
     def test_score_output(self):
         self.maxDiff = None
 
@@ -38,6 +46,7 @@ class TestMessageData(unittest.TestCase):
         message_data.author = "Françoise Sagan"
         message_data.message = "Class is an aura of confidence that is being sure without being cocky. Class has nothing to do with money. Class never runs scared. It is self-discipline and self-knowledge. It's the sure-footedness that comes with having proved you can meet life."
         sentiment = ClassifiedData()
+        sentiment.category_key = 'sentiment'
         sentiment.count = 6
         sentiment.subcount = {
             "positive": 3,
@@ -45,6 +54,7 @@ class TestMessageData(unittest.TestCase):
             "neutral": 2
         }
         domain = ClassifiedData()
+        domain.category_key = 'domain'
         domain.count = 21
         domain.subcount = {
             "financial": 3,
@@ -55,6 +65,7 @@ class TestMessageData(unittest.TestCase):
             "relationships": 2
         }
         behavior = ClassifiedData()
+        behavior.category_key = 'behavior'
         behavior.count = 10
         behavior.subcount = {
             "aggressive": 1,
