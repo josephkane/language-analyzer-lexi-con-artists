@@ -25,6 +25,45 @@ class Sentiment(Lexicon):
 
         return classified_data
 
+    def modify_sentiment_from_behavior(self, message_data):
+        classified_data = message_data.classified_data
+
+        behavior = classified_data['behavior']
+        sentiment = classified_data['sentiment']
+
+        aggressive_count = behavior.subcount['aggressive'] / behavior.count
+        passive_count = behavior.subcount['passive'] / behavior.count
+        mentoring_count = behavior.subcount['mentoring'] / behavior.count
+        positive_count = sentiment.subcount['positive'] / sentiment.count
+        negative_count = sentiment.subcount['negative'] / sentiment.count
+
+        sentiment_value = None
+
+        if positive_count > negative_count:
+            sentiment_value = 'positive'
+        elif negative_count > positive_count:
+            sentiment_value = 'negative'
+
+        def modify_from_subcount(score):
+            if score >= 0.5:
+                count_value = 1
+                if score >= 0.75:
+                    count_value = 2
+                sentiment.count += count_value
+                sentiment.subcount[sentiment_value] += count_value
+
+        if sentiment_value:
+            modify_from_subcount(aggressive_count)
+            modify_from_subcount(mentoring_count)
+
+        count_value = 0
+        if passive_count >= 0.75:
+            count_value = 2
+        elif passive_count >= 0.5:
+            count_value = 1
+        sentiment.count += count_value
+        sentiment.subcount['neutral'] += count_value
+
 
 sentiment_lexicon = {
     'positive': {

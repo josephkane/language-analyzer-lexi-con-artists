@@ -25,6 +25,9 @@ def analyze_messages():
         message_data.add_classified_data(domain.categorize_message(message_data.token_data))
         message_data.add_classified_data(sentiment.categorize_message(message_data.token_data))
 
+        sentiment.modify_sentiment_from_behavior(message_data)
+        print(message_data.classified_data)
+
         score_data = message_data.calc_final_scores()
 
         print(create_message_output(score_data))
