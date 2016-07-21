@@ -28,6 +28,7 @@ def analyze_messages():
         score_data = message_data.calc_final_scores()
 
         print(create_message_output(score_data))
+    print(u'\U0001F913' + '  ' + u'\U00002764' + ' ' + u'\U0001F40D')
 
 def create_message_output(score_data):
     '''
@@ -52,7 +53,7 @@ def create_message_output(score_data):
         'behavioral': u'\U0001F607',
         'scientific': u'\U0001F52C',
         'educational': u'\U0001f4DA',
-        'politics': u'\U0001F5FD    ',
+        'politics': u'\U0001F5FD',
         'relationships': u'\U0001F48F'
     }
 
