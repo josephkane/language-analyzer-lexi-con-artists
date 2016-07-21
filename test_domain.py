@@ -23,5 +23,5 @@ class TestDomain(unittest.TestCase):
         self.assertEqual(classified_message.count, classified_data.count)
         self.assertEqual(classified_message.subcount, classified_data.subcount)
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover
     unittest.main()

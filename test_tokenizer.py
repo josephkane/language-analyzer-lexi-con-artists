@@ -31,5 +31,5 @@ class TestTokenizer(unittest.TestCase):
     def test_get_punctuation_is_punctuation(self):
         self.assertEqual(get_punctuation(self.message), self.punctuation)
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover
     unittest.main()
