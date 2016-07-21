@@ -12,6 +12,18 @@ class Behavior(Lexicon):
 
         super().__init__('behavior', behavior_lexicon)
 
+    def categorize_message(self, token_data):
+        classified_data = super().categorize_message(token_data)
+
+        if '!' in token_data.punctuation.keys():
+            classified_data.count += token_data.punctuation['!']
+            classified_data.subcount['aggressive'] += token_data.punctuation['!']
+
+        if '?' in token_data.punctuation.keys():
+            classified_data.count += token_data.punctuation['?']
+            classified_data.subcount['inquisitive'] += token_data.punctuation['?']
+
+        return classified_data
 
 behavior_lexicon = {
     'aggressive': {

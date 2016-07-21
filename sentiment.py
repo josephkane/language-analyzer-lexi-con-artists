@@ -13,6 +13,19 @@ class Sentiment(Lexicon):
         super().__init__('sentiment', sentiment_lexicon)
 
 
+    def categorize_message(self, token_data):
+        classified_data = super().categorize_message(token_data)
+
+        if '!' in token_data.punctuation.keys():
+            if classified_data.subcount['positive'] > classified_data.subcount['negative']:
+                classified_data.subcount['positive'] += token_data.punctuation['!']
+            elif classified_data.subcount['negative'] > classified_data.subcount['positive']:
+                classified_data.subcount['negative'] += token_data.punctuation['!']
+
+
+        return classified_data
+
+
 sentiment_lexicon = {
     'positive': {
         'ability': 1,
