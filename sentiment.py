@@ -32,6 +32,8 @@ class Sentiment(Lexicon):
         sentiment = classified_data['sentiment']
 
         aggressive_count = behavior.subcount['aggressive'] / behavior.count
+        print("behavior.subcount['passive']", behavior.subcount['passive'])
+        print("behavior.count", behavior.count)
         passive_count = behavior.subcount['passive'] / behavior.count
         mentoring_count = behavior.subcount['mentoring'] / behavior.count
         positive_count = sentiment.subcount['positive'] / sentiment.count

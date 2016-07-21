@@ -83,7 +83,7 @@ class TestSentiment(unittest.TestCase):
         message_data.classified_data['behavior'].count = 14
         message_data.classified_data['behavior'].subcount = {
             "aggressive": 1,
-            "passive": 300,
+            "passive": 8,
             "mentoring": 1,
             "inquisitive": 1,
             "transaction": 1
