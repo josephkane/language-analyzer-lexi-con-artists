@@ -1,5 +1,13 @@
 messages = [
   {
+    "author": "Joe",
+    "message": "Allowing cautious decisions love to vexation ability."
+  },
+  {
+    "author": "Joe",
+    "message": "Allowing cautious decisions love to vexation ability resistance scoundrels."
+  },
+  {
     "author": "Françoise Sagan",
     "message": "Class is an aura of confidence that is being sure without being cocky. Class has nothing to do with money. Class never runs scared. It is self-discipline and self-knowledge. It's the sure-footedness that comes with having proved you can meet life. "
   },
@@ -122,13 +130,5 @@ messages = [
   {
     "author": "Stephen Frank",
     "message": "Bottom line is, I didn't return to Apple to make a fortune. I've been very lucky in my life and already have one. When I was 25, my net worth was $100 million or so. I decided then that I wasn't going to let it ruin my life. There's no way you could ever spend it all, and I don't view wealth as something that validates my intelligence."
-  },
-  {
-    "author": "Joe",
-    "message": "Allowing cautious decisions love to vexation ability."
-  },
-  {
-    "author": "Joe",
-    "message": "Allowing cautious decisions love to vexation ability resistance scoundrels."
   }
 ]
