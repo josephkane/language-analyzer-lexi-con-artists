@@ -5,7 +5,7 @@ from behavior import *
 from domain import *
 from sentiment import *
 
-def analyze_messages():
+def analyze_messages(): # pragma: no cover
     '''
     Process each message and print the analyzed results
     '''
