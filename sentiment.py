@@ -14,6 +14,16 @@ class Sentiment(Lexicon):
 
 
     def categorize_message(self, token_data):
+        '''
+        Categorize a message including punctuation data
+
+        Arguments:
+            The token data for a message to be categorized
+
+        Returns:
+            A ClassifiedData for the message
+        '''
+
         classified_data = super().categorize_message(token_data)
 
         if '!' in token_data.punctuation.keys():
@@ -26,6 +36,13 @@ class Sentiment(Lexicon):
         return classified_data
 
     def modify_sentiment_from_behavior(self, message_data):
+        '''
+        Modify MessageData sentiment from the data's behavior
+
+        Arguments:
+            The MessageDate to modify
+        '''
+
         classified_data = message_data.classified_data
 
         behavior = classified_data['behavior']
@@ -45,6 +62,13 @@ class Sentiment(Lexicon):
             sentiment_value = 'negative'
 
         def modify_from_subcount(score):
+            '''
+            Modify sentiment value based on a subcount
+
+            Arguments:
+                The subcount to be used to modify
+            '''
+
             if score >= 0.5:
                 count_value = 1
                 if score >= 0.75:
