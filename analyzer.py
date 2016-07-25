@@ -1,3 +1,6 @@
+import sys
+import getopt
+
 from messages import *
 from message_data import *
 from tokenizer import *
@@ -5,10 +8,13 @@ from behavior import *
 from domain import *
 from sentiment import *
 
-def analyze_messages(): # pragma: no cover
+def analyze_messages(argv): # pragma: no cover
     '''
     Process each message and print the analyzed results
     '''
+
+    opts, args = getopt.getopt(argv, 'e')
+    fun_style = ('-e', '') in opts
 
     behavior = Behavior()
     domain = Domain()
@@ -29,10 +35,11 @@ def analyze_messages(): # pragma: no cover
 
         score_data = message_data.calc_final_scores()
 
-        print(create_message_output(score_data))
-    print(u'\U0001F913' + '  ' + u'\U00002764' + ' ' + u'\U0001F40D')
+        print(create_message_output(score_data, fun_style))
+    if fun_style: print(u'\U0001F913' + '  ' + u'\U00002764' + ' ' + u'\U0001F40D')
 
-def create_message_output(score_data):
+
+def create_message_output(score_data, fun_style=True):
     '''
     Build an output string for a message
 
@@ -67,12 +74,14 @@ def create_message_output(score_data):
     for category, subcategories in sorted(score_data['scores'].items()):
         output += '# {} #\n'.format(category)
         for sub, score in sorted(subcategories.items()):
-            bars = '[' + '|' * int(score * 10) + '-' * int(10 - score * 10) + ']'
-            # bars = '[' + (symbols[sub] + ' ') * int(score * 10) + '- ' * int(10 - score * 10) + ']'
+            if fun_style:
+                bars = '[' + (symbols[sub] + ' ') * int(score * 10) + '- ' * int(10 - score * 10) + ']'
+            else:
+                bars = '[' + '|' * int(score * 10) + '-' * int(10 - score * 10) + ']'
             output += '- {}{}{}  {}\n'.format(sub, ' ' * (15 - len(sub)), bars, score)
         output += '\n'
 
     return output
 
 if __name__ == '__main__': # pragma: no cover
-    analyze_messages()
+    analyze_messages(sys.argv[1:])
