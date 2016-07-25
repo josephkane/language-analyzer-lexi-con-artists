@@ -4,7 +4,10 @@ The language analyzer will use sentiment analysis, and behavior prediction to pr
 
 ## Overview
 
-Built with Python 3. Running `python analyzer.py` will produce an analysis report for each message stored in messages.py
+![python](https://img.shields.io/badge/python-3.3.6+-blue.svg)
+![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)
+
+Running `python analyzer.py` will produce an analysis report for each message stored in messages.py
 
 
 ##### Example output
@@ -14,24 +17,24 @@ Author:   Stephen Frank
 Message:  Bottom line is, I didn't return to Apple to make a fortune. I've been                                                                                                                                                              very lucky in my life and already have one. When I was 25, my net worth was $100                                                                                                                                                              million or so. I decided then that I wasn't going to let it ruin my life. There                                                                                                                                                             's no way you could ever spend it all, and I don't view wealth as something that                                                                                                                                                              validates my intelligence.
 
 # behavior #
-- aggressive     [| | - - - - - - - - ]  0.2
-- inquisitive    [- - - - - - - - - - ]  0.0
-- mentoring      [| - - - - - - - - - ]  0.1
-- passive        [| - - - - - - - - - ]  0.1
-- transaction    [| | | | | | | | - - ]  0.8
+-aggressive     [||--------]  0.2
+-inquisitive    [----------]  0.0
+-mentoring      [|---------]  0.1
+-passive        [|---------]  0.1
+-transaction    [||||||||--]  0.8
 
 # domain #
-- behavioral     [| - - - - - - - - - ]  0.1
-- educational    [| - - - - - - - - - ]  0.1
-- financial      [| | | | | | - - - - ]  0.6
-- politics       [| - - - - - - - - - ]  0.1
-- relationships  [- - - - - - - - - - ]  0.0
-- scientific     [| - - - - - - - - - ]  0.1
+-behavioral     [|---------]  0.1
+-educational    [|---------]  0.1
+-financial      [||||||----]  0.6
+-politics       [|---------]  0.1
+-relationships  [----------]  0.0
+-scientific     [|---------]  0.1
 
 # sentiment #
-- negative       [| | - - - - - - - - ]  0.2
-- neutral        [| | | | | | - - - - ]  0.6
-- positive       [| | | - - - - - - - ]  0.3
+-negative       [||--------]  0.2
+-neutral        [||||||----]  0.6
+-positive       [|||-------]  0.3
 
 ```
 
