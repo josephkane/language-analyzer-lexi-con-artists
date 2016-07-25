@@ -1,5 +1,4 @@
 import sys
-import getopt
 
 from messages import *
 from message_data import *
@@ -8,13 +7,16 @@ from behavior import *
 from domain import *
 from sentiment import *
 
-def analyze_messages(argv): # pragma: no cover
+def analyze_messages(argv=['']): # pragma: no cover
     '''
     Process each message and print the analyzed results
+
+    Arguments:
+        the list of command line arguments
     '''
 
-    opts, args = getopt.getopt(argv, 'e')
-    fun_style = ('-e', '') in opts
+    fun_style = '-e' in argv
+    print(argv)
 
     behavior = Behavior()
     domain = Domain()
@@ -43,8 +45,9 @@ def create_message_output(score_data, fun_style=True):
     '''
     Build an output string for a message
 
-    Args:
+    Arguments:
         A dictionary containg message info and score values
+        A boolean for printing the fun way
 
     Returns:
         A formatted string to print
