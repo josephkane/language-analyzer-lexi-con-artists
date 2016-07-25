@@ -67,7 +67,8 @@ def create_message_output(score_data):
     for category, subcategories in sorted(score_data['scores'].items()):
         output += '# {} #\n'.format(category)
         for sub, score in sorted(subcategories.items()):
-            bars = '[' + '| ' * int(score * 10) + '- ' * int(10 - score * 10) + ']'
+            bars = '[' + '|' * int(score * 10) + '-' * int(10 - score * 10) + ']'
+            # bars = '[' + (symbols[sub] + ' ') * int(score * 10) + '- ' * int(10 - score * 10) + ']'
             output += '- {}{}{}  {}\n'.format(sub, ' ' * (15 - len(sub)), bars, score)
         output += '\n'
 
