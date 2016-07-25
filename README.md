@@ -5,9 +5,11 @@ The language analyzer will use sentiment analysis, and behavior prediction to pr
 ## Overview
 
 ![python](https://img.shields.io/badge/python-3.3.6+-blue.svg)
-![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)
+![coverage](https://img.shields.io/badge/coverage-99%25-brightgreen.svg)
 
 Running `python analyzer.py` will produce an analysis report for each message stored in messages.py
+
+For terminals with unicode support, run `python analyzer.py -e` for a more fun output.
 
 
 ##### Example output
