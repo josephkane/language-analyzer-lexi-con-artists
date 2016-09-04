@@ -79,7 +79,7 @@ def create_message_output(score_data, fun_style=True):
         for sub, score in sorted(subcategories.items()):
             if fun_style:
                 bars = '[' + (symbols[sub] + ' ') * int(score * 10) + '- ' * int(10 - score * 10) + ']'
-            else:
+            else: # pragma: no cover
                 bars = '[' + '|' * int(score * 10) + '-' * int(10 - score * 10) + ']'
             output += '- {}{}{}  {}\n'.format(sub, ' ' * (15 - len(sub)), bars, score)
         output += '\n'
